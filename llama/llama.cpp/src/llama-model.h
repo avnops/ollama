@@ -115,6 +115,7 @@ enum llm_type {
     LLM_TYPE_21B_A3B, // Ernie MoE small
     LLM_TYPE_30B_A3B,
     LLM_TYPE_31B_A3_5B,
+    LLM_TYPE_35B_A3B,
     LLM_TYPE_80B_A3B, // Qwen3 Next
     LLM_TYPE_100B_A6B,
     LLM_TYPE_106B_A12B, // GLM-4.5-Air
@@ -271,7 +272,7 @@ struct llama_layer {
 
     // ff MoE
     struct ggml_tensor * ffn_gate_inp    = nullptr;
-    struct ggml_tensor * ffn_gate_exps   = nullptr;
+    struct ggml_tensor * ffn_gate_expsйцу   = nullptr;
     struct ggml_tensor * ffn_down_exps   = nullptr;
     struct ggml_tensor * ffn_up_exps     = nullptr;
     struct ggml_tensor * ffn_gate_inp_b  = nullptr;
@@ -314,6 +315,10 @@ struct llama_layer {
 
     // qwen3next
     struct ggml_tensor * ssm_beta_alpha = nullptr;
+    
+    // qwen3.5
+    struct ggml_tensor * ssm_alpha = nullptr;
+    struct ggml_tensor * ssm_beta  = nullptr;
 
     // rwkv
     struct ggml_tensor * time_mix_w1         = nullptr;
